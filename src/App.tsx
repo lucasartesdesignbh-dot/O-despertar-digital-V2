@@ -438,8 +438,8 @@ export default function App() {
             </h2>
           </div>
 
-          {/* Top 2 Bonuses */}
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
+          {/* Bonuses Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {[
               { 
                 title: "Meditação para Iniciantes", 
@@ -452,14 +452,20 @@ export default function App() {
                 desc: "O protocolo exato para desligar o cérebro e dormir como um bebê.", 
                 val: "R$ 47,90", 
                 img: "https://i.ibb.co/tM58p03z/bonus-3.png"
+              },
+              { 
+                title: "Versão para Impressão", 
+                desc: "Todo o processo para você imprimir, marcar e seguir à vontade.", 
+                val: "R$ 47,90", 
+                img: "https://i.ibb.co/TqcLQghf/capa-despertar-digital-sozinha-ok.png"
               }
             ].map((bonus, i) => (
               <motion.div 
                 key={i}
                 whileHover={{ y: -12 }}
-                className="bg-[#0A0A0A] rounded-[45px] overflow-hidden border border-white/10 flex flex-col md:flex-row shadow-2xl group relative"
+                className="bg-[#0A0A0A] rounded-[45px] overflow-hidden border border-white/10 flex flex-col shadow-2xl group relative h-full"
               >
-                <div className="md:w-2/5 aspect-square md:aspect-auto overflow-hidden relative bg-[#050505] flex items-center justify-center p-10">
+                <div className="aspect-square overflow-hidden relative bg-[#050505] flex items-center justify-center p-10 shrink-0">
                   <img 
                     src={bonus.img} 
                     alt={bonus.title} 
@@ -487,50 +493,6 @@ export default function App() {
               </motion.div>
             ))}
           </div>
-
-          {/* Featured Bonus 3 - Horizontal Layout matching attachment */}
-          <motion.div 
-            whileHover={{ scale: 1.01 }}
-            className="bg-zinc-50 rounded-[50px] overflow-hidden border border-zinc-200 shadow-2xl group relative"
-          >
-            <div className="grid lg:grid-cols-2 items-center">
-              <div className="p-12 md:p-20 order-2 lg:order-1">
-                <div className="inline-block bg-brand-dark text-white font-black px-6 py-2 rounded-xl text-xs uppercase tracking-[0.2em] mb-8 shadow-lg">
-                  Bônus Especial 3
-                </div>
-                <h3 className="text-4xl md:text-5xl font-black uppercase text-ink mb-6 leading-[1.1] tracking-tighter italic">
-                  Guia Despertar Digital <br />
-                  <span className="text-brand-dark">Versão para Impressão</span>
-                </h3>
-                <p className="text-zinc-500 text-xl font-medium mb-12 leading-relaxed max-w-xl">
-                  Todo o processo para você imprimir, marcar, seguir e rabiscar à vontade. Fica mais fácil para acompanhar o seu processo assim.
-                </p>
-                
-                <div className="flex flex-wrap gap-12 items-center pt-10 border-t border-zinc-200">
-                  <div className="flex flex-col">
-                    <span className="text-xs text-zinc-400 uppercase font-black tracking-widest mb-2">Valor Original</span>
-                    <span className="text-zinc-400 line-through font-black text-2xl italic">DE R$ 47,90</span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-brand-dark uppercase font-black tracking-widest mb-2">Oferta Especial</span>
-                    <div className="flex items-center gap-4">
-                      <span className="text-brand-dark font-black text-5xl uppercase tracking-tighter italic">POR R$ 0</span>
-                      <span className="bg-emerald-500 text-white px-4 py-1 rounded-lg text-xs font-black uppercase tracking-widest shadow-md">GRÁTIS</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="bg-zinc-100 h-full flex items-center justify-center p-12 lg:p-20 order-1 lg:order-2 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent pointer-events-none" />
-                <img 
-                  src="https://i.ibb.co/TqcLQghf/capa-despertar-digital-sozinha-ok.png" 
-                  alt="Versão para Impressão" 
-                  className="w-full max-w-md h-auto object-contain drop-shadow-[0_40px_80px_rgba(0,0,0,0.2)] group-hover:scale-105 transition-transform duration-700"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            </div>
-          </motion.div>
 
           <div className="mt-24 text-center">
             <motion.div 
