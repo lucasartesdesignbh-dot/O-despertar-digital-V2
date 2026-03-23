@@ -167,10 +167,15 @@ export default function App() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://i.ibb.co/xtW1cJ9B/vicio-em-celular.png" 
+            src="https://i.ibb.co/fVrZn0f0/vicio-em-celular.webp" 
             alt="Vício em Celular Background" 
             className="w-full h-full object-cover opacity-50" 
             referrerPolicy="no-referrer"
+            width={1920}
+            height={1080}
+            fetchPriority="high"
+            decoding="async"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
           <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
@@ -338,10 +343,14 @@ export default function App() {
             >
               <div className="absolute -inset-10 bg-brand/20 blur-[100px] rounded-full opacity-40 animate-pulse" />
               <img 
-                src="https://i.ibb.co/cSpb7msT/O-DETOX-PRINCIPAL-ipad.png" 
+                src="https://i.ibb.co/m5xGQ0LS/O-DETOX-PRINCIPAL-ipad.webp" 
                 alt="Despertar Digital" 
                 className="rounded-[50px] shadow-2xl relative z-10 border border-zinc-200 animate-float"
                 referrerPolicy="no-referrer"
+                width={600}
+                height={600}
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white p-4 md:p-8 rounded-[20px] md:rounded-[30px] shadow-2xl z-20 border border-zinc-100">
                 <div className="flex items-center gap-2 md:gap-4 mb-1 md:mb-2">
@@ -408,6 +417,10 @@ export default function App() {
                   alt="Pacote Completo" 
                   className="w-full h-auto rounded-[40px] shadow-2xl relative z-10 mb-12 lg:mb-0"
                   referrerPolicy="no-referrer"
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="space-y-10 lg:order-1">
@@ -483,6 +496,10 @@ export default function App() {
                     alt={bonus.title} 
                     className="w-full h-full object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] group-hover:scale-110 transition-transform duration-700" 
                     referrerPolicy="no-referrer" 
+                    width={400}
+                    height={400}
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute top-6 left-6 bg-[#00FF00] text-black font-black px-4 py-1.5 rounded-lg text-[10px] uppercase tracking-widest z-20 shadow-[0_0_15px_rgba(0,255,0,0.3)]">
                     Bônus {i+1}
@@ -577,6 +594,10 @@ export default function App() {
                 alt="Oferta Completa" 
                 className="w-full h-auto rounded-3xl shadow-2xl border border-zinc-100"
                 referrerPolicy="no-referrer"
+                width={600}
+                height={450}
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
 
