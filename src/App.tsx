@@ -163,14 +163,23 @@ export default function App() {
       </div>
 
       {/* 1. HERO / HEADLINE */}
-      <section className="relative pt-20 pb-32 px-6 overflow-hidden min-h-[95vh] flex flex-col items-center justify-center text-center">
-        <div className="absolute inset-0 bg-noise pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.05)_0%,transparent_70%)] pointer-events-none" />
+      <section className="relative pt-12 pb-20 px-6 overflow-hidden min-h-[90vh] flex flex-col items-center justify-center text-center">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://i.ibb.co/xtW1cJ9B/vicio-em-celular.png" 
+            alt="Vício em Celular Background" 
+            className="w-full h-full object-cover opacity-50" 
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
+          <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
+        </div>
         
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-5xl mx-auto relative z-10"
+          className="max-w-6xl mx-auto relative z-10"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -180,13 +189,16 @@ export default function App() {
             ⚠️ ALERTA: Isso está destruindo sua saúde mental agora
           </motion.div>
 
-          <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-10 uppercase italic">
-            VOCÊ NÃO ESTÁ <br /> SEM FOCO — <br />
-            <span className="text-gradient-danger">VOCÊ ESTÁ VICIADO</span> <br />
-            NO SEU CELULAR
+          <h1 className="text-5xl md:text-8xl lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter mb-8 uppercase italic">
+            VOCÊ NÃO ESTÁ <br />
+            SEM FOCO. <br />
+            VOCÊ ESTÁ <br />
+            <span className="text-gradient-danger inline-block pr-10 pb-4 overflow-visible">VICIADO</span> <br />
+            NO SEU <br />
+            CELULAR
           </h1>
 
-          <p className="text-xl md:text-3xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed mb-14">
+          <p className="text-xl md:text-3xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
             O seu celular foi desenhado para te sequestrar. Descubra como reprogramar seu cérebro e recuperar sua vida em apenas 21 dias.
           </p>
 
@@ -215,11 +227,11 @@ export default function App() {
       </section>
 
       {/* 2. SEÇÃO DE DOR (INTENSIFICADA) */}
-      <section className="py-32 px-6 bg-black text-white relative">
+      <section className="py-20 px-6 bg-black text-white relative">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8 italic">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 italic">
               Você se reconhece <br /> <span className="text-danger">nessas situações?</span>
             </h2>
             <div className="w-24 h-2 bg-danger mx-auto rounded-full" />
@@ -252,8 +264,8 @@ export default function App() {
             ))}
           </div>
 
-          <div className="mt-24 text-center">
-            <p className="text-2xl md:text-3xl font-serif italic text-zinc-500 mb-12">
+          <div className="mt-16 text-center">
+            <p className="text-2xl md:text-3xl font-serif italic text-zinc-500 mb-8">
               "O celular não é mais uma ferramenta. Ele se tornou sua prisão."
             </p>
             <CTAButton text="QUERO ME LIBERTAR AGORA" variant="danger" />
@@ -262,15 +274,15 @@ export default function App() {
       </section>
 
       {/* 3. QUEBRA DE CRENÇA */}
-      <section className="py-40 px-6 relative overflow-hidden flex items-center justify-center">
+      <section className="py-24 px-6 relative overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            className="mb-16"
+            className="mb-10"
           >
-            <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-12 leading-none text-white italic">
+            <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-8 leading-none text-white italic">
               O PROBLEMA <br /> <span className="text-brand">NÃO É VOCÊ</span>
             </h2>
           </motion.div>
@@ -285,22 +297,22 @@ export default function App() {
       </section>
 
       {/* 4. APRESENTAÇÃO DO PRODUTO */}
-      <section className="py-32 px-6 bg-paper relative overflow-hidden">
+      <section className="py-20 px-6 bg-paper relative overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-20 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <span className="text-brand-dark font-black uppercase tracking-[0.3em] text-sm mb-6 block">A Solução Definitiva</span>
-              <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-10 leading-none text-ink italic">
+              <span className="text-brand-dark font-black uppercase tracking-[0.3em] text-sm mb-4 block">A Solução Definitiva</span>
+              <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-8 leading-none text-ink italic">
                 DESPERTAR <br /> <span className="text-brand-dark">DIGITAL</span>
               </h2>
-              <p className="text-2xl text-zinc-600 mb-10 leading-relaxed font-medium">
+              <p className="text-2xl text-zinc-600 mb-8 leading-relaxed font-medium">
                 Um método simples, prático e 100% aplicável para você retomar o controle da sua mente em apenas 21 dias. Sem teorias complexas, apenas o que funciona.
               </p>
-              <div className="space-y-6 mb-14">
+              <div className="space-y-4 mb-10">
                 {[
                   "Protocolo de 21 dias passo a passo",
                   "Técnicas de reprogramação dopaminérgica",
@@ -346,10 +358,10 @@ export default function App() {
       </section>
 
       {/* 5. BENEFÍCIOS (RESULTADOS EMOCIONAIS) */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-24">
-            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 text-ink italic">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 text-ink italic">
               A Vida Que <br /> <span className="text-brand-dark">Te Espera</span>
             </h2>
             <div className="w-24 h-2 bg-brand-dark mx-auto rounded-full" />
@@ -365,10 +377,10 @@ export default function App() {
               <motion.div 
                 key={i}
                 whileHover={{ y: -10 }}
-                className="p-12 rounded-[50px] bg-zinc-50 border border-zinc-100 hover:shadow-2xl hover:shadow-brand/10 transition-all group"
+                className="p-8 rounded-[40px] bg-zinc-50 border border-zinc-100 hover:shadow-2xl hover:shadow-brand/10 transition-all group"
               >
-                <div className="w-20 h-20 bg-brand-dark/10 text-brand-dark rounded-3xl flex items-center justify-center mb-10 group-hover:rotate-12 transition-transform">
-                  <b.icon className="w-10 h-10" />
+                <div className="w-16 h-16 bg-brand-dark/10 text-brand-dark rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform">
+                  <b.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-3xl font-black uppercase mb-6 text-ink tracking-tight">{b.title}</h3>
                 <p className="text-zinc-500 text-xl leading-relaxed font-medium">{b.desc}</p>
@@ -379,12 +391,12 @@ export default function App() {
       </section>
 
       {/* 6. O QUE VOCÊ RECEBE */}
-      <section className="py-32 px-6 bg-zinc-50">
+      <section className="py-20 px-6 bg-zinc-50">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-[80px] p-12 md:p-24 shadow-2xl border border-zinc-100 relative overflow-hidden">
+          <div className="bg-white rounded-[80px] p-12 md:p-16 shadow-2xl border border-zinc-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 blur-[80px] rounded-full" />
             
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-20 text-center text-ink italic">
+            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 text-center text-ink italic">
               O Seu Arsenal <br /> <span className="text-brand-dark">Anti-Vício</span>
             </h2>
 
@@ -429,10 +441,10 @@ export default function App() {
       </section>
 
       {/* 7. BÔNUS (MINI-OFERTAS) */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-24">
-            <span className="bg-brand-dark/10 text-brand-dark px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-6 inline-block">Presentes Exclusivos</span>
+          <div className="text-center mb-16">
+            <span className="bg-brand-dark/10 text-brand-dark px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-4 inline-block">Presentes Exclusivos</span>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-ink italic">
               Aceleradores <br /> <span className="text-brand-dark">Gratuitos</span>
             </h2>
@@ -476,10 +488,10 @@ export default function App() {
                     Bônus {i+1}
                   </div>
                 </div>
-                <div className="p-10 flex flex-col flex-1">
-                  <h3 className="text-2xl font-black uppercase text-white mb-4 leading-tight tracking-tight">{bonus.title}</h3>
-                  <p className="text-zinc-400 mb-8 font-medium text-base opacity-80 leading-relaxed">{bonus.desc}</p>
-                  <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
+                <div className="p-8 flex flex-col flex-1">
+                  <h3 className="text-2xl font-black uppercase text-white mb-3 leading-tight tracking-tight">{bonus.title}</h3>
+                  <p className="text-zinc-400 mb-6 font-medium text-base opacity-80 leading-relaxed">{bonus.desc}</p>
+                  <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
                     <div className="flex flex-col">
                       <span className="text-[10px] text-zinc-600 uppercase font-black tracking-widest mb-1">Valor</span>
                       <span className="text-zinc-500 line-through font-bold">{bonus.val}</span>
@@ -494,7 +506,7 @@ export default function App() {
             ))}
           </div>
 
-          <div className="mt-24 text-center">
+          <div className="mt-16 text-center">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -513,9 +525,9 @@ export default function App() {
       </section>
 
       {/* 8. PROVA SOCIAL */}
-      <section className="py-32 px-6 bg-zinc-50">
+      <section className="py-20 px-6 bg-zinc-50">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-20 text-center text-ink italic">
+          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 text-center text-ink italic">
             Vidas <span className="text-brand-dark">Despertas</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-10">
@@ -530,7 +542,7 @@ export default function App() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white p-12 rounded-[60px] shadow-xl border border-zinc-100 relative"
+                className="bg-white p-8 rounded-[40px] shadow-xl border border-zinc-100 relative"
               >
                 <div className="absolute -top-6 left-12 w-12 h-12 bg-brand-dark rounded-2xl flex items-center justify-center shadow-lg">
                   <Star className="w-6 h-6 text-white fill-white" />
@@ -549,16 +561,16 @@ export default function App() {
       </section>
 
       {/* 9. OFERTA (ANCORAGEM FORTE) */}
-      <section className="py-40 px-6 bg-white relative overflow-hidden">
+      <section className="py-24 px-6 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,0,0.03)_0%,transparent_70%)] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-16">
+          <div className="mb-12">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="mb-12 max-w-lg mx-auto"
+              className="mb-10 max-w-lg mx-auto"
             >
               <img 
                 src="https://i.ibb.co/R4GLXP12/COMPLETO.png" 
@@ -596,9 +608,9 @@ export default function App() {
       </section>
 
       {/* 10. GARANTIA */}
-      <section className="py-32 px-6 bg-zinc-50">
+      <section className="py-20 px-6 bg-zinc-50">
         <div className="max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-16 p-16 bg-white rounded-[80px] border border-zinc-200 shadow-2xl relative overflow-hidden">
+          <div className="flex flex-col md:flex-row items-center gap-12 p-10 bg-white rounded-[60px] border border-zinc-200 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 blur-3xl rounded-full" />
             <div className="shrink-0 relative">
               <div className="absolute inset-0 bg-brand/20 blur-2xl rounded-full animate-pulse" />
@@ -615,9 +627,9 @@ export default function App() {
       </section>
 
       {/* 11. FAQ */}
-      <section className="py-32 px-6 bg-white">
+      <section className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-20 text-center text-ink italic">
+          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-12 text-center text-ink italic">
             Perguntas <br /> <span className="text-brand-dark">Frequentes</span>
           </h2>
           <div className="space-y-4">
@@ -642,26 +654,26 @@ export default function App() {
       </section>
 
       {/* 12. CTA FINAL (EMOCIONAL) */}
-      <section className="py-40 px-6 bg-ink text-white text-center relative overflow-hidden">
+      <section className="py-24 px-6 bg-ink text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,0,0.05)_0%,transparent_70%)] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto relative z-10">
-          <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-16 leading-none italic">
+          <h2 className="text-5xl md:text-9xl font-black uppercase tracking-tighter mb-12 leading-none italic">
             A DECISÃO <br /> <span className="text-brand">É SUA</span>
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-10 mb-20">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
             <motion.div 
               whileHover={{ scale: 1.02 }}
-              className="p-10 rounded-[40px] bg-white/5 border border-white/10 text-left opacity-40 hover:opacity-60 transition-opacity"
+              className="p-8 rounded-[30px] bg-white/5 border border-white/10 text-left opacity-40 hover:opacity-60 transition-opacity"
             >
               <p className="text-zinc-500 font-black mb-6 uppercase tracking-widest text-sm">Caminho A</p>
               <p className="text-2xl font-bold leading-tight">Continuar escravo do algoritmo, perdendo horas da sua vida, sentindo-se ansioso, cansado e sem futuro.</p>
             </motion.div>
             <motion.div 
               whileHover={{ scale: 1.05 }}
-              className="p-10 rounded-[40px] bg-brand/10 border border-brand/40 text-left shadow-2xl shadow-brand/10"
+              className="p-8 rounded-[30px] bg-brand/10 border border-brand/40 text-left shadow-2xl shadow-brand/10"
             >
               <p className="text-brand font-black mb-6 uppercase tracking-widest text-sm">Caminho B</p>
               <p className="text-2xl font-black leading-tight">Investir R$ 9,90 para retomar o controle da sua mente, do seu foco e da sua vida hoje mesmo.</p>
@@ -679,7 +691,7 @@ export default function App() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-20 px-6 bg-black text-zinc-600 text-center border-t border-white/5">
+      <footer className="py-12 px-6 bg-black text-zinc-600 text-center border-t border-white/5">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center gap-8 mb-10">
             <ShieldCheck className="w-8 h-8 opacity-20" />
