@@ -40,9 +40,10 @@ const CTAButton = ({ text, subtext, className = "", onClick, variant = "primary"
   variant?: "primary" | "danger" | "white";
 }) => {
   const handleClick = () => {
-    // Facebook Pixel: Track InitiateCheckout
+    // Facebook Pixel: Track Events
     if (typeof (window as any).fbq === 'function') {
       (window as any).fbq('track', 'InitiateCheckout');
+      (window as any).fbq('track', 'Purchase', { value: 0.00, currency: 'USD' });
     }
 
     if (onClick) {
