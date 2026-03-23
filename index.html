@@ -34,6 +34,12 @@
     <!-- Preload Critical Images -->
     <link rel="preload" as="image" href="https://i.ibb.co/fVrZn0f0/vicio-em-celular.webp" fetchpriority="high" crossorigin="anonymous" />
     <link rel="preload" as="image" href="https://i.ibb.co/m5xGQ0LS/O-DETOX-PRINCIPAL-ipad.webp" crossorigin="anonymous" />
+    <style>
+      body { background-color: #000; margin: 0; color: #fff; font-family: system-ui, -apple-system, sans-serif; }
+      #root { min-height: 100vh; }
+      /* Optimization for mobile rendering */
+      .section-lazy { content-visibility: auto; contain-intrinsic-size: 1px 500px; }
+    </style>
   </head>
   <body>
     <!-- Meta Pixel Code (NoScript) -->
@@ -46,16 +52,20 @@
 
     <!-- Meta Pixel Code -->
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '942185371513286');
-    fbq('track', 'PageView');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '942185371513286');
+        fbq('track', 'PageView');
+      }, 3000); // Delay for 3 seconds to prioritize LCP on mobile
+    });
     </script>
     <!-- End Meta Pixel Code -->
   </body>

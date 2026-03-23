@@ -176,6 +176,7 @@ export default function App() {
             fetchPriority="high"
             decoding="async"
             loading="eager"
+            sizes="(max-width: 768px) 100vw, 1920px"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black" />
           <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
@@ -232,7 +233,7 @@ export default function App() {
       </section>
 
       {/* 2. SEÇÃO DE DOR (INTENSIFICADA) */}
-      <section className="py-20 px-6 bg-black text-white relative">
+      <section className="py-20 px-6 bg-black text-white relative section-lazy">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-16">
@@ -302,7 +303,7 @@ export default function App() {
       </section>
 
       {/* 4. APRESENTAÇÃO DO PRODUTO */}
-      <section className="py-20 px-6 bg-paper relative overflow-hidden">
+      <section className="py-20 px-6 bg-paper relative overflow-hidden section-lazy">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -351,6 +352,7 @@ export default function App() {
                 height={600}
                 loading="lazy"
                 decoding="async"
+                sizes="(max-width: 768px) 90vw, 600px"
               />
               <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white p-4 md:p-8 rounded-[20px] md:rounded-[30px] shadow-2xl z-20 border border-zinc-100">
                 <div className="flex items-center gap-2 md:gap-4 mb-1 md:mb-2">
@@ -367,7 +369,7 @@ export default function App() {
       </section>
 
       {/* 5. BENEFÍCIOS (RESULTADOS EMOCIONAIS) */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white section-lazy">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 text-ink italic">
@@ -400,7 +402,7 @@ export default function App() {
       </section>
 
       {/* 6. O QUE VOCÊ RECEBE */}
-      <section className="py-20 px-6 bg-zinc-50">
+      <section className="py-20 px-6 bg-zinc-50 section-lazy">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-[80px] p-12 md:p-16 shadow-2xl border border-zinc-100 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 blur-[80px] rounded-full" />
@@ -454,7 +456,7 @@ export default function App() {
       </section>
 
       {/* 7. BÔNUS (MINI-OFERTAS) */}
-      <section className="py-20 px-6 bg-white">
+      <section className="py-20 px-6 bg-white section-lazy">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="bg-brand-dark/10 text-brand-dark px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-4 inline-block">Presentes Exclusivos</span>
@@ -542,7 +544,7 @@ export default function App() {
       </section>
 
       {/* 8. PROVA SOCIAL */}
-      <section className="py-20 px-6 bg-zinc-50">
+      <section className="py-20 px-6 bg-zinc-50 section-lazy">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 text-center text-ink italic">
             Vidas <span className="text-brand-dark">Despertas</span>
@@ -578,7 +580,7 @@ export default function App() {
       </section>
 
       {/* 9. OFERTA (ANCORAGEM FORTE) */}
-      <section className="py-24 px-6 bg-white relative overflow-hidden">
+      <section className="py-24 px-6 bg-white relative overflow-hidden section-lazy">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,0,0.03)_0%,transparent_70%)] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
@@ -629,7 +631,7 @@ export default function App() {
       </section>
 
       {/* 10. GARANTIA */}
-      <section className="py-20 px-6 bg-zinc-50">
+      <section className="py-20 px-6 bg-zinc-50 section-lazy">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12 p-10 bg-white rounded-[60px] border border-zinc-200 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand/5 blur-3xl rounded-full" />
