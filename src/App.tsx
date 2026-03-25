@@ -42,14 +42,19 @@ const CTAButton = ({ text, subtext, className = "", onClick, variant = "primary"
   const handleClick = () => {
     // Facebook Pixel: Track Events
     if (typeof (window as any).fbq === 'function') {
-      (window as any).fbq('track', 'InitiateCheckout');
-      (window as any).fbq('track', 'Purchase', { value: 0.00, currency: 'USD' });
+      (window as any).fbq('track', 'InitiateCheckout', {
+        content_name: 'Despertar Digital',
+        content_category: 'Digital Product',
+        value: 9.90,
+        currency: 'BRL'
+      });
     }
 
     if (onClick) {
       onClick();
     } else {
-      window.open(CHECKOUT_URL, '_blank');
+      const win = window.open(CHECKOUT_URL, '_blank');
+      if (win) win.focus();
     }
   };
 
@@ -196,16 +201,14 @@ export default function App() {
           </motion.div>
 
           <h1 className="text-5xl md:text-8xl lg:text-[110px] font-black text-white leading-[0.9] tracking-tighter mb-8 uppercase italic">
-            VOCÊ NÃO ESTÁ <br />
-            SEM FOCO. <br />
-            VOCÊ ESTÁ <br />
-            <span className="text-gradient-danger inline-block pr-10 pb-4 overflow-visible">VICIADO</span> <br />
-            NO SEU <br />
-            CELULAR
+            Detox Digital <br />
+            de 21 dias para <br />
+            <span className="text-gradient-danger inline-block pr-10 pb-4 overflow-visible">sair do vício</span> <br />
+            em celular
           </h1>
 
-          <p className="text-xl md:text-3xl text-zinc-400 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
-            O seu celular foi desenhado para te sequestrar. Descubra como reprogramar seu cérebro e recuperar sua vida em apenas 21 dias.
+          <p className="text-xl md:text-3xl text-zinc-400 max-w-4xl mx-auto font-medium leading-relaxed mb-10">
+            Receba um plano diário, simples e prático, para reduzir o uso e recuperar foco e produtividade.
           </p>
 
           <div className="flex flex-col items-center gap-8">
@@ -232,48 +235,45 @@ export default function App() {
         </motion.div>
       </section>
 
-      {/* 2. SEÇÃO DE DOR (INTENSIFICADA) */}
-      <section className="py-20 px-6 bg-black text-white relative section-lazy">
+      {/* 2. SEÇÃO DE DOR (COMPACTA) */}
+      <section className="py-12 px-6 bg-black text-white relative section-lazy">
         <div className="absolute inset-0 bg-noise pointer-events-none" />
         <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 italic">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 italic">
               Você se reconhece <br /> <span className="text-danger">nessas situações?</span>
             </h2>
-            <div className="w-24 h-2 bg-danger mx-auto rounded-full" />
+            <div className="w-16 h-1.5 bg-danger mx-auto rounded-full" />
           </div>
 
-          <div className="grid gap-10">
+          <div className="grid gap-4">
             {[
-              { icon: MousePointer2, title: "O 'Scroll' Infinito", desc: "Você abre o Instagram para ver uma coisa e, quando percebe, já se passaram 45 minutos de vídeos inúteis." },
-              { icon: EyeOff, title: "A Mente em Outro Lugar", desc: "Você está com sua família ou amigos, mas sua mão coça para checar o celular a cada 2 minutos." },
-              { icon: CloudRain, title: "Cansaço Mental Crônico", desc: "Você acorda cansado, passa o dia no 'piloto automático' e vai dormir exausto, mas sem ter produzido nada." },
-              { icon: AlertTriangle, title: "A Ansiedade da Notificação", desc: "Qualquer vibração no bolso te faz perder o foco instantaneamente. Você é escravo do barulho." },
-              { icon: XCircle, title: "A Culpa do Tempo Perdido", desc: "No fim do dia, você sente um vazio. Sabe que poderia ter feito mais, mas o vício foi mais forte." }
+              { icon: MousePointer2, title: "O 'Scroll' Infinito", desc: "Você abre o Instagram e, quando percebe, já se passaram 45 minutos de vídeos inúteis." },
+              { icon: EyeOff, title: "A Mente em Outro Lugar", desc: "Você está com sua família, mas sua mão coça para checar o celular a cada 2 minutos." },
+              { icon: CloudRain, title: "Cansaço Mental Crônico", desc: "Você acorda cansado e passa o dia no 'piloto automático' sem ter produzido nada." },
+              { icon: AlertTriangle, title: "A Ansiedade da Notificação", desc: "Qualquer vibração te faz perder o foco instantaneamente. Você é escravo do barulho." },
+              { icon: XCircle, title: "A Culpa do Tempo Perdido", desc: "No fim do dia, você sente um vazio. Sabe que poderia ter feito mais, mas o vício venceu." }
             ].map((item, i) => (
               <motion.div 
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col md:flex-row items-start gap-8 p-10 rounded-[40px] bg-zinc-900/40 border border-white/5 hover:border-danger/30 transition-all group"
+                transition={{ delay: i * 0.05 }}
+                className="flex items-center gap-5 p-5 rounded-3xl bg-zinc-900/40 border border-white/5 hover:border-danger/30 transition-all group"
               >
-                <div className="bg-danger/10 p-5 rounded-3xl text-danger group-hover:scale-110 transition-transform shrink-0">
-                  <item.icon className="w-10 h-10" />
+                <div className="bg-danger/10 p-3 rounded-2xl text-danger group-hover:scale-110 transition-transform shrink-0">
+                  <item.icon className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-3xl font-black uppercase mb-4 tracking-tight">{item.title}</h3>
-                  <p className="text-zinc-400 text-xl leading-relaxed font-medium">{item.desc}</p>
+                  <h3 className="text-lg md:text-xl font-black uppercase tracking-tight">{item.title}</h3>
+                  <p className="text-zinc-400 text-sm md:text-base font-medium leading-tight">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <p className="text-2xl md:text-3xl font-serif italic text-zinc-500 mb-8">
-              "O celular não é mais uma ferramenta. Ele se tornou sua prisão."
-            </p>
+          <div className="mt-10 text-center">
             <CTAButton text="QUERO ME LIBERTAR AGORA" variant="danger" />
           </div>
         </div>
@@ -304,81 +304,87 @@ export default function App() {
 
       {/* 4. APRESENTAÇÃO DO PRODUTO */}
       <section className="py-20 px-6 bg-paper relative overflow-hidden section-lazy">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="flex flex-col items-center text-center">
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="w-full"
             >
               <span className="text-brand-dark font-black uppercase tracking-[0.3em] text-sm mb-4 block">A Solução Definitiva</span>
               <h2 className="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-8 leading-none text-ink italic">
                 DESPERTAR <br /> <span className="text-brand-dark">DIGITAL</span>
               </h2>
-              <p className="text-2xl text-zinc-600 mb-8 leading-relaxed font-medium">
-                Um método simples, prático e 100% aplicável para você retomar o controle da sua mente em apenas 21 dias. Sem teorias complexas, apenas o que funciona.
-              </p>
-              <div className="space-y-4 mb-10">
-                {[
-                  "Protocolo de 21 dias passo a passo",
-                  "Técnicas de reprogramação dopaminérgica",
-                  "Estratégias para foco inabalável",
-                  "Resgate da sua vida analógica"
-                ].map((t, i) => (
-                  <div key={i} className="flex items-center gap-4">
-                    <div className="bg-brand-dark/10 p-1 rounded-full">
-                      <CheckCircle2 className="w-7 h-7 text-brand-dark" />
+              
+              <div className="flex flex-col items-center">
+                <div className="bg-white py-3 px-6 rounded-2xl shadow-xl border border-zinc-100 w-fit mb-8 flex flex-col items-center">
+                  <div className="flex items-center gap-3 mb-1">
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-brand-dark text-brand-dark" />)}
                     </div>
-                    <span className="text-xl font-bold text-ink">{t}</span>
+                    <span className="font-black text-ink text-sm">4.9/5</span>
                   </div>
-                ))}
-              </div>
-              <CTAButton text="QUERO O MÉTODO COMPLETO" className="bg-ink text-brand hover:bg-zinc-800" />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="absolute -inset-10 bg-brand/20 blur-[100px] rounded-full opacity-40 animate-pulse" />
-              <img 
-                src="https://i.ibb.co/m5xGQ0LS/O-DETOX-PRINCIPAL-ipad.webp" 
-                alt="Despertar Digital" 
-                className="rounded-[50px] shadow-2xl relative z-10 border border-zinc-200 animate-float"
-                referrerPolicy="no-referrer"
-                width={600}
-                height={600}
-                loading="lazy"
-                decoding="async"
-                sizes="(max-width: 768px) 90vw, 600px"
-              />
-              <div className="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 bg-white p-4 md:p-8 rounded-[20px] md:rounded-[30px] shadow-2xl z-20 border border-zinc-100">
-                <div className="flex items-center gap-2 md:gap-4 mb-1 md:mb-2">
-                  <div className="flex gap-0.5 md:gap-1">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 md:w-4 md:h-4 fill-brand-dark text-brand-dark" />)}
-                  </div>
-                  <span className="font-black text-ink text-xs md:text-base">4.9/5</span>
+                  <p className="text-zinc-500 font-bold text-[10px] uppercase tracking-widest">+2.300 Alunos</p>
                 </div>
-                <p className="text-zinc-500 font-bold text-[8px] md:text-sm uppercase tracking-widest">+2.300 Alunos</p>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="relative mb-12 max-w-2xl"
+                >
+                  <div className="absolute -inset-10 bg-brand/20 blur-[100px] rounded-full opacity-40 animate-pulse" />
+                  <img 
+                    src="https://i.ibb.co/m5xGQ0LS/O-DETOX-PRINCIPAL-ipad.webp" 
+                    alt="Despertar Digital" 
+                    className="rounded-[40px] shadow-2xl relative z-10 border border-zinc-200 animate-float w-full h-auto"
+                    referrerPolicy="no-referrer"
+                    width={600}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </motion.div>
+
+                <p className="text-2xl md:text-3xl text-zinc-600 mb-10 leading-relaxed font-medium max-w-3xl">
+                  Um método simples, prático e 100% aplicável para você retomar o controle da sua mente em apenas 21 dias. Sem teorias complexas, apenas o que funciona.
+                </p>
+                
+                <div className="space-y-4 mb-12 text-left w-full max-w-md mx-auto">
+                  {[
+                    "Protocolo de 21 dias passo a passo",
+                    "Técnicas de reprogramação dopaminérgica",
+                    "Estratégias para foco inabalável",
+                    "Resgate da sua vida analógica"
+                  ].map((t, i) => (
+                    <div key={i} className="flex items-center gap-4">
+                      <div className="bg-brand-dark/10 p-1 rounded-full shrink-0">
+                        <CheckCircle2 className="w-7 h-7 text-brand-dark" />
+                      </div>
+                      <span className="text-xl font-bold text-ink">{t}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <CTAButton text="QUERO O MÉTODO COMPLETO" className="bg-ink text-brand hover:bg-zinc-800" />
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 5. BENEFÍCIOS (RESULTADOS EMOCIONAIS) */}
-      <section className="py-20 px-6 bg-white section-lazy">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 text-ink italic">
+      {/* 5. BENEFÍCIOS (RESULTADOS EMOCIONAIS) - COMPACTO */}
+      <section className="py-12 px-6 bg-white section-lazy">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-ink italic">
               A Vida Que <br /> <span className="text-brand-dark">Te Espera</span>
             </h2>
-            <div className="w-24 h-2 bg-brand-dark mx-auto rounded-full" />
+            <div className="w-16 h-1.5 bg-brand-dark mx-auto rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid gap-4">
             {[
               { icon: Focus, title: "Foco Natural", desc: "Consiga ler um livro ou trabalhar por horas sem sentir a necessidade agonizante de checar o celular." },
               { icon: Battery, title: "Energia Infinita", desc: "Acabe com o cansaço mental. Acorde com disposição e clareza para realizar seus objetivos." },
@@ -387,73 +393,25 @@ export default function App() {
             ].map((b, i) => (
               <motion.div 
                 key={i}
-                whileHover={{ y: -10 }}
-                className="p-8 rounded-[40px] bg-zinc-50 border border-zinc-100 hover:shadow-2xl hover:shadow-brand/10 transition-all group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="flex items-center gap-5 p-5 rounded-3xl bg-zinc-50 border border-zinc-100 hover:border-brand/30 transition-all group"
               >
-                <div className="w-16 h-16 bg-brand-dark/10 text-brand-dark rounded-2xl flex items-center justify-center mb-8 group-hover:rotate-12 transition-transform">
-                  <b.icon className="w-8 h-8" />
+                <div className="bg-brand-dark/10 p-3 rounded-2xl text-brand-dark group-hover:scale-110 transition-transform shrink-0">
+                  <b.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-3xl font-black uppercase mb-6 text-ink tracking-tight">{b.title}</h3>
-                <p className="text-zinc-500 text-xl leading-relaxed font-medium">{b.desc}</p>
+                <div>
+                  <h3 className="text-lg md:text-xl font-black uppercase tracking-tight text-ink">{b.title}</h3>
+                  <p className="text-zinc-500 text-sm md:text-base font-medium leading-tight">{b.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 6. O QUE VOCÊ RECEBE */}
-      <section className="py-20 px-6 bg-zinc-50 section-lazy">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-[80px] p-12 md:p-16 shadow-2xl border border-zinc-100 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 blur-[80px] rounded-full" />
-            
-            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 text-center text-ink italic">
-              O Seu Arsenal <br /> <span className="text-brand-dark">Anti-Vício</span>
-            </h2>
-
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
-              <div className="relative group lg:order-2">
-                <div className="absolute -inset-4 bg-brand/10 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                <img 
-                  src="https://i.ibb.co/R4GLXP12/COMPLETO.png" 
-                  alt="Pacote Completo" 
-                  className="w-full h-auto rounded-[40px] shadow-2xl relative z-10 mb-12 lg:mb-0"
-                  referrerPolicy="no-referrer"
-                  width={800}
-                  height={600}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div className="space-y-10 lg:order-1">
-                {[
-                  { title: "Ebook Mestre: Despertar Digital", desc: "O protocolo completo de 21 dias com a ciência por trás do detox." },
-                  { title: "Cronograma Dia a Dia", desc: "Um mapa exato do que fazer desde o momento que acorda até dormir." },
-                  { title: "Checklist de Sobrevivência", desc: "Ferramenta prática para não cair nas armadilhas do algoritmo." },
-                  { title: "Guia Prático de Foco", desc: "Técnicas imediatas para dobrar sua produtividade no trabalho." }
-                ].map((item, i) => (
-                  <motion.div 
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex gap-6"
-                  >
-                    <div className="shrink-0 w-12 h-12 rounded-2xl bg-brand-dark text-white flex items-center justify-center shadow-lg">
-                      <CheckCircle2 className="w-7 h-7" />
-                    </div>
-                    <div>
-                      <h4 className="text-2xl font-black uppercase text-ink mb-2">{item.title}</h4>
-                      <p className="text-zinc-500 text-lg font-medium">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* 7. BÔNUS (MINI-OFERTAS) */}
       <section className="py-20 px-6 bg-white section-lazy">
@@ -461,7 +419,7 @@ export default function App() {
           <div className="text-center mb-16">
             <span className="bg-brand-dark/10 text-brand-dark px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest mb-4 inline-block">Presentes Exclusivos</span>
             <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-ink italic">
-              Aceleradores <br /> <span className="text-brand-dark">Gratuitos</span>
+              Receba Bônus <br /> <span className="text-brand-dark">Exclusivos</span>
             </h2>
           </div>
 
@@ -543,11 +501,100 @@ export default function App() {
         </div>
       </section>
 
-      {/* 8. PROVA SOCIAL */}
+      {/* 8. OFERTA (ANCORAGEM FORTE) - CENTRALIZADA E OTIMIZADA */}
+      <section className="py-24 px-6 bg-black text-white relative overflow-hidden section-lazy">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,0,0.05)_0%,transparent_70%)] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-12 italic leading-none">
+              OFERTA EXCLUSIVA: <br />
+              <span className="text-brand">TUDO O QUE VOCÊ PRECISA</span>
+            </h2>
+
+            {/* Product Image */}
+            <div className="relative group mb-16 max-w-2xl mx-auto">
+              <div className="absolute -inset-20 bg-brand/10 blur-[120px] rounded-full opacity-50 group-hover:opacity-80 transition-opacity" />
+              <img 
+                src="https://i.ibb.co/R4GLXP12/COMPLETO.png" 
+                alt="Oferta Despertar Digital" 
+                className="w-full h-auto relative z-10 drop-shadow-[0_35px_60px_rgba(0,255,0,0.15)] group-hover:scale-105 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="max-w-2xl mx-auto text-left mb-16">
+              <div className="space-y-4">
+                {[
+                  { text: "Protocolo Despertar Digital", highlight: false },
+                  { text: "Teste de Autoavaliação de Vício", highlight: false },
+                  { text: "Auditoria Digital da Rotina", highlight: false },
+                  { text: "Dieta de Notificações", highlight: false },
+                  { text: "Guia de Foco e Produtividade", highlight: false },
+                  { text: "BÔNUS 1: Meditação para Iniciantes", highlight: true },
+                  { text: "BÔNUS 2: Pôr do Sol Digital", highlight: true },
+                  { text: "BÔNUS 3: Versão para Impressão", highlight: true }
+                ].map((item, i) => (
+                  <div key={i} className={`flex items-center gap-4 p-3 rounded-2xl transition-colors ${item.highlight ? 'bg-brand/5 border border-brand/20' : ''}`}>
+                    <div className="shrink-0 w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center">
+                      <CheckCircle2 className={`w-4 h-4 ${item.highlight ? 'text-brand animate-pulse' : 'text-brand'}`} />
+                    </div>
+                    <span className={`text-lg md:text-xl font-bold ${item.highlight ? 'text-brand' : 'text-zinc-300'}`}>
+                      {item.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pricing Section - Centralized */}
+            <div className="flex flex-col items-center mb-16">
+              <p className="text-zinc-500 font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-lg md:text-2xl line-through mb-4">
+                De R$ 147,00
+              </p>
+              
+              <div className="flex flex-col items-center gap-2">
+                <span className="text-2xl md:text-4xl font-black text-white uppercase tracking-widest">
+                  POR APENAS
+                </span>
+                <div className="flex items-center justify-center gap-2">
+                  <span className="text-2xl md:text-5xl font-black text-brand">R$</span>
+                  <span className="text-8xl md:text-[180px] font-black text-brand leading-none tracking-tighter">
+                    9,90
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col items-center gap-8">
+              <CTAButton 
+                text="QUERO MEU ACESSO AGORA" 
+                subtext="Pagamento único • Acesso imediato" 
+                className="w-full max-w-xl bg-brand hover:bg-brand-dark text-black py-8" 
+              />
+              <div className="flex flex-wrap justify-center gap-6 text-zinc-500 text-[10px] font-black uppercase tracking-widest">
+                <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-brand" /> Compra 100% Segura</span>
+                <span className="flex items-center gap-2"><Lock className="w-4 h-4 text-brand" /> Entrega Imediata</span>
+                <span className="flex items-center gap-2"><Star className="w-4 h-4 text-brand" /> 7 Dias de Garantia</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* 9. PROVA SOCIAL (DEPOIMENTOS) */}
       <section className="py-20 px-6 bg-zinc-50 section-lazy">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-12 text-center text-ink italic">
-            Vidas <span className="text-brand-dark">Despertas</span>
+            Quem já comprou, <span className="text-brand-dark">aprovou:</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-10">
             {[
@@ -575,57 +622,6 @@ export default function App() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 9. OFERTA (ANCORAGEM FORTE) */}
-      <section className="py-24 px-6 bg-white relative overflow-hidden section-lazy">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,255,0,0.03)_0%,transparent_70%)] pointer-events-none" />
-        
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="mb-12">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="mb-10 max-w-lg mx-auto"
-            >
-              <img 
-                src="https://i.ibb.co/R4GLXP12/COMPLETO.png" 
-                alt="Oferta Completa" 
-                className="w-full h-auto rounded-3xl shadow-2xl border border-zinc-100"
-                referrerPolicy="no-referrer"
-                width={600}
-                height={450}
-                loading="lazy"
-                decoding="async"
-              />
-            </motion.div>
-
-            <p className="text-zinc-400 font-black uppercase tracking-[0.4em] text-2xl line-through mb-4">De R$ 97,00</p>
-            <p className="text-ink font-black uppercase tracking-tighter text-3xl mb-6 italic">Por apenas</p>
-            <div className="flex items-center justify-center gap-4">
-              <span className="text-5xl font-black text-ink mt-8">R$</span>
-              <span className="text-[120px] md:text-[220px] font-black text-brand-dark leading-none tracking-tighter">9,90</span>
-            </div>
-          </div>
-
-          <motion.div 
-            animate={{ scale: [1, 1.05, 1] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-            className="bg-danger text-white px-10 py-4 rounded-2xl inline-block font-black uppercase tracking-widest text-sm md:text-lg mb-16 shadow-2xl shadow-danger/40"
-          >
-            🔥 OFERTA POR TEMPO LIMITADO • PODE SAIR DO AR AGORA
-          </motion.div>
-
-          <div className="flex flex-col items-center gap-10">
-            <CTAButton text="QUERO RECUPERAR MEU FOCO" subtext="Aproveite o preço promocional de R$ 9,90" className="max-w-lg" />
-            <div className="flex flex-wrap justify-center gap-8 text-zinc-400 text-[11px] font-black uppercase tracking-widest">
-              <span className="flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-brand-dark" /> Compra Segura</span>
-              <span className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-brand-dark" /> Acesso Imediato</span>
-              <span className="flex items-center gap-2"><Shield className="w-5 h-5 text-brand-dark" /> 7 Dias de Garantia</span>
-            </div>
           </div>
         </div>
       </section>
